@@ -8,10 +8,7 @@ function createPlayers(...players: string[]): Player[] {
   }))
 }
 
-function createMatches(players: Player[], playersPerTeam = 2): Match[] {
-  const matches: Match[] = []
-  const usedTeams: Set<string> = new Set()
-
+function calculate(players: Player[], playersPerTeam = 2) {
   const totalPlayers = players.length
   const matchesPerRound = totalPlayers / (playersPerTeam * 2)
   const matchesPerPlayer = totalPlayers - 1
@@ -26,9 +23,22 @@ function createMatches(players: Player[], playersPerTeam = 2): Match[] {
     matchesPerPlayer
   })
 
-  if (totalPlayers % 2 !== 0) {
+  return {
+    totalMatches,
+    totalRounds,
+    totalPlayers,
+    matchesPerRound,
+    matchesPerPlayer
+  }
+}
+
+function createMatches(players: Player[]): Match[] {
+  const matches: Match[] = []
+  const usedTeams: Set<string> = new Set()
+
+  if (players.length % 2 !== 0) {
     throw new Error('The number of participants must be even')
-  } else if (totalPlayers < 2) {
+  } else if (players.length < 2) {
     throw new Error('The number of participants must be greater than 1')
   }
 
@@ -87,6 +97,7 @@ function createMatches(players: Player[], playersPerTeam = 2): Match[] {
         return false
       }
     }
+
     for (const player of team2) {
       if (
         player.hasPlayedWith.has(team1[0].name) ||
@@ -95,6 +106,7 @@ function createMatches(players: Player[], playersPerTeam = 2): Match[] {
         return false
       }
     }
+
     return true
   }
 
@@ -119,12 +131,18 @@ const players = createPlayers(
 )
 
 const matches = createMatches(players)
+const { totalRounds } = calculate(players, 2)
 
-console.log('Partidas sorteadas:')
 matches.forEach((match, index) => {
-  const { team1, team2 } = match
   console.log(`Partida ${index + 1}:`)
+
+  const { team1, team2 } = match
+  const [team1Player1, team1Player2] = team1
+  const [team2Player1, team2Player2] = team2
+
   console.log(
-    `${team1[0].name} / ${team1[1].name} x ${team2[0].name} / ${team2[1].name}`
+    `${team1Player1.name} (${team1Player1.id}) / ${team1Player2.name} (${team1Player2.id}) x ${team2Player1.name} (${team2Player1.id}) / ${team2Player2.name} (${team2Player2.id})`
   )
+
+  console.log('')
 })
