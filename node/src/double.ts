@@ -1,4 +1,4 @@
-import { Match, Player, Team } from './interfaces.model'
+import { Match, Player, Team } from './models/interfaces.model'
 
 function createPairs(players: Player[]): [Player, Player][] {
   const pairs: [Player, Player][] = []

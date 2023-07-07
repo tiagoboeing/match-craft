@@ -1,0 +1,25 @@
+<header class="bg-white py-4 shadow-md print:shadow-none">
+  <div class="container mx-auto">
+    <div class="flex flex-row content-between w-full items-center">
+      <h1 class="text-lg text-gray-500 font-bold grow">Championship table</h1>
+
+      <a
+        class="github-button print:hidden"
+        href="https://github.com/tiagoboeing/championship-table"
+        data-size="large"
+        data-show-count="true"
+        aria-label="Star tiagoboeing/championship-table on GitHub"
+      >
+        Star
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="container mx-auto p-5 my-8 shadow-md bg-white rounded-md">
+  <app-player></app-player>
+
+  <app-table></app-table>
+
+  <router-outlet></router-outlet>
+</div>
