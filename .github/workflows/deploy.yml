@@ -37,7 +37,7 @@ jobs:
 
       - name: Build
         shell: bash
-        run: npm run build --production --base-href=https://tiagoboeing.github.io/championship-table/
+        run: npm run build --production --base-href=/championship-table/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
