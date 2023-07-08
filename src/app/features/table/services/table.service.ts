@@ -145,8 +145,6 @@ export class TableService {
           return allTeam1PlayersAreAvailable && allTeam2PlayersAreAvailable
         })
 
-        console.log(matchWithPlayersAvailables);
-
         if (!playerMatches || !matchWithPlayersAvailables) {
           continue
         }

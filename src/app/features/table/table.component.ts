@@ -32,10 +32,6 @@ export class TableComponent {
 
     this.rounds = this.tableService.groupRounds(this.rounds)
 
-    console.log(this.matches)
-    console.log(this.stats)
-    console.log(this.rounds)
-
     this.cdr.detectChanges()
   }
 
