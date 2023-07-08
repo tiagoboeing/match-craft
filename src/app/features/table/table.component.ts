@@ -70,6 +70,6 @@ export class TableComponent {
   }
 
   get websiteUrl(): string {
-    return window.location.hostname
+    return window.location.href.replace(`${window.location.protocol}//`, '')
   }
 }
