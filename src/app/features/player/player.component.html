@@ -1,9 +1,11 @@
-<h1 class="text-2xl font-bold border-b pb-2 mb-5">Create player</h1>
+<h1 class="text-2xl font-bold border-b pb-2 mb-5 print:hidden">
+  Create player
+</h1>
 
-<form [formGroup]="form">
+<form [formGroup]="form" class="print:hidden">
   <div class="flex flex-row gap-3 flex-grow w-full items-end">
     <div class="grow">
-      <label for="name">Name</label>
+      <label for="name" class="text-sm text-gray-500">Player name</label>
       <input
         #name
         type="text"
@@ -25,9 +27,9 @@
   </div>
 </form>
 
-<div id="players-list" class="mt-8">
+<div id="players-list print:hidden" class="mt-8">
   <ng-container *ngIf="players?.length; else empty">
-    <table class="min-w-full">
+    <table class="min-w-full print:hidden">
       <thead class="bg-slate-100 border-b border-slate-200">
         <tr>
           <th
@@ -107,7 +109,7 @@
 
   <ng-template #empty>
     <div
-      class="flex flex-col p-7 gap-3 border-dashed cursor-pointer transition border-slate-300 border rounded-md hover:bg-slate-200 text-center items-center"
+      class="flex flex-col p-7 gap-3 print:hidden border-dashed cursor-pointer transition border-slate-300 border rounded-md hover:bg-slate-200 text-center items-center"
       (click)="name.focus()"
     >
       <svg
@@ -133,10 +135,14 @@
 <div id="generate-matches" class="mt-6">
   <button
     type="submit"
-    (click)="create()"
-    [disabled]="form.invalid"
-    class="w-full h-min bg-transparent transition disabled:text-slate-500 disabled:ring-0 disabled:cursor-not-allowed disabled:border-slate-500 disabled:hover:bg-transparent active:ring hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+    (click)="table.create(players)"
+    [disabled]="players.length < 4 || players.length % 2 !== 0"
+    class="w-full h-min print:hidden bg-blue-500 text-white transition disabled:text-slate-500 disabled:ring-0 disabled:cursor-not-allowed disabled:bg-transparent disabled:border-slate-500 disabled:hover:bg-transparent active:ring hover:bg-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
   >
     Generate matches
   </button>
+
+  <ng-container class="print:block">
+    <app-table #table></app-table>
+  </ng-container>
 </div>

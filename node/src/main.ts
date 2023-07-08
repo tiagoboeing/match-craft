@@ -4,7 +4,7 @@ function createPlayers(...players: string[]): Player[] {
   return players.map((name, index) => ({
     id: index + 1,
     name,
-    hasPlayedWith: new Set()
+    hasPlayedWith: new Set(),
   }))
 }
 
@@ -20,7 +20,7 @@ function calculate(players: Player[], playersPerTeam = 2) {
     totalRounds,
     totalPlayers,
     matchesPerRound,
-    matchesPerPlayer
+    matchesPerPlayer,
   })
 
   return {
@@ -28,7 +28,7 @@ function calculate(players: Player[], playersPerTeam = 2) {
     totalRounds,
     totalPlayers,
     matchesPerRound,
-    matchesPerPlayer
+    matchesPerPlayer,
   }
 }
 
@@ -44,7 +44,10 @@ function createMatches(players: Player[]): Match[] {
 
   generateMatches([], players)
 
-  function generateMatches(selectedPlayers: Player[], remainingPlayers: Player[]) {
+  function generateMatches(
+    selectedPlayers: Player[],
+    remainingPlayers: Player[],
+  ) {
     if (selectedPlayers.length === 4) {
       const team1 = [selectedPlayers[0], selectedPlayers[1]]
       const team2 = [selectedPlayers[2], selectedPlayers[3]]
@@ -59,7 +62,7 @@ function createMatches(players: Player[]): Match[] {
 
           const match: Match = {
             team1: team1,
-            team2: team2
+            team2: team2,
           }
 
           matches.push(match)
@@ -72,7 +75,7 @@ function createMatches(players: Player[]): Match[] {
         if (isValidPlayer(selectedPlayers, player)) {
           generateMatches(
             [...selectedPlayers, player],
-            remainingPlayers.filter((_, index) => index !== i)
+            remainingPlayers.filter((_, index) => index !== i),
           )
         }
       }
@@ -118,7 +121,11 @@ function createMatches(players: Player[]): Match[] {
   return matches
 }
 
-function createRounds(matches: Match[], players: Player[], totalRounds: number) {
+function createRounds(
+  matches: Match[],
+  players: Player[],
+  totalRounds: number,
+) {
   let playersNotPlayOnRound = structuredClone(players)
   let roundMatches: Round[] = []
 
@@ -133,7 +140,7 @@ function createRounds(matches: Match[], players: Player[], totalRounds: number) 
       const playerMatches = matches.filter(
         ({ team1, team2 }) =>
           team1.some((p) => p.id === player.id) ||
-          team2.some((p) => p.id === player.id)
+          team2.some((p) => p.id === player.id),
       )
 
       const matchWithPlayersAvailables = playerMatches.find((match) => {
@@ -141,10 +148,10 @@ function createRounds(matches: Match[], players: Player[], totalRounds: number) 
 
         // check if all players from match not played yet on the round
         const allTeam1PlayersAreAvailable = team1.every((p) =>
-          playersNotPlayOnRound.find((player) => player.id === p.id)
+          playersNotPlayOnRound.find((player) => player.id === p.id),
         )
         const allTeam2PlayersAreAvailable = team2.every((p) =>
-          playersNotPlayOnRound.find((player) => player.id === p.id)
+          playersNotPlayOnRound.find((player) => player.id === p.id),
         )
 
         return allTeam1PlayersAreAvailable && allTeam2PlayersAreAvailable
@@ -162,12 +169,12 @@ function createRounds(matches: Match[], players: Player[], totalRounds: number) 
           player.id !== team1[0].id &&
           player.id !== team1[1].id &&
           player.id !== team2[0].id &&
-          player.id !== team2[1].id
+          player.id !== team2[1].id,
       )
 
       roundMatches.push({
         round,
-        matches: [matchWithPlayersAvailables]
+        matches: [matchWithPlayersAvailables],
       })
     }
 
@@ -187,8 +194,6 @@ const players = createPlayers(
   'Lucas',
   'Matheus',
   'Marcos',
-  'Zeca',
-  'LG'
 )
 
 const matches = createMatches(players)
@@ -202,7 +207,7 @@ matches.forEach((match, index) => {
   const [team2Player1, team2Player2] = team2
 
   console.log(
-    `${team1Player1.name} (${team1Player1.id}) / ${team1Player2.name} (${team1Player2.id}) x ${team2Player1.name} (${team2Player1.id}) / ${team2Player2.name} (${team2Player2.id})`
+    `${team1Player1.name} (${team1Player1.id}) / ${team1Player2.name} (${team1Player2.id}) x ${team2Player1.name} (${team2Player1.id}) / ${team2Player2.name} (${team2Player2.id})`,
   )
 
   console.log('')
@@ -217,7 +222,7 @@ function groupRounds(rounds: Round[]) {
     if (!acc[roundNumber]) {
       acc[roundNumber] = {
         round: roundNumber,
-        matches: []
+        matches: [],
       }
     }
 
@@ -234,7 +239,7 @@ for (const currentRound of rounds) {
     console.log(
       `${match.team1.map((p) => p.name).join(' / ')} x ${match.team2
         .map((p) => p.name)
-        .join(' / ')}`
+        .join(' / ')}`,
     )
   }
 }

@@ -45,7 +45,7 @@ const players = [
   'Lucas',
   'Rafael',
   'Gabriel',
-  'Matheus'
+  'Matheus',
 ]
 const schedule = generateSchedule(players)
 

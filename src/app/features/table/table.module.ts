@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TableService } from './services/table.service';
-import { TableComponent } from './table.component';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { TableService } from './services/table.service'
+import { TableComponent } from './table.component'
 
 @NgModule({
   declarations: [TableComponent],

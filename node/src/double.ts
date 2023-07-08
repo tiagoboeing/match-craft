@@ -24,10 +24,10 @@ function createPairs(players: Player[]): [Player, Player][] {
 
 function findCompatiblePlayer(
   player: Player,
-  availablePlayers: Player[]
+  availablePlayers: Player[],
 ): Player | undefined {
   const compatiblePlayers = availablePlayers.filter(
-    (p) => !player.hasPlayedWith.includes(p) && p !== player
+    (p) => !player.hasPlayedWith.includes(p) && p !== player,
   )
 
   if (compatiblePlayers.length === 0) {
@@ -54,7 +54,7 @@ function generateMatches(players: Player[], playersPerTeam = 2) {
     totalRounds,
     totalPlayers,
     matchesPerRound,
-    matchesPerPlayer
+    matchesPerPlayer,
   })
 
   if (totalPlayers % 2 !== 0) {
@@ -68,14 +68,14 @@ function generateMatches(players: Player[], playersPerTeam = 2) {
     return playTogether.some(
       (team) =>
         (team.player1.id === player.id && team.player2.id === partner.id) ||
-        (team.player1.id === partner.id && team.player2.id === player.id)
+        (team.player1.id === partner.id && team.player2.id === player.id),
     )
   }
 
   const addToPlayerTogether = (player: Player, partner: Player) => {
     playTogether.push({
       player1: player,
-      player2: partner
+      player2: partner,
     })
   }
 
@@ -143,7 +143,7 @@ const table = generateMatches([
   { id: 5, name: 'João', hasPlayedWith: new Set() },
   { id: 6, name: 'Lucas', hasPlayedWith: new Set() },
   { id: 7, name: 'Matheus', hasPlayedWith: new Set() },
-  { id: 8, name: 'Marcos', hasPlayedWith: new Set() }
+  { id: 8, name: 'Marcos', hasPlayedWith: new Set() },
 ])!
 
 // console.dir({ matches: table }, { depth: null })
