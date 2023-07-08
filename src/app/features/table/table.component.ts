@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core'
 import { Player } from '../player/models/player.model'
 import { Match, Round } from './models/table.model'
 import { TableService } from './services/table.service'
@@ -16,7 +16,7 @@ export class TableComponent {
   rounds: Round[] = []
   stats!: ReturnType<typeof this.tableService.calculate>
 
-  constructor(private tableService: TableService) {}
+  constructor(private tableService: TableService, private cdr: ChangeDetectorRef) {}
 
   public create(players: Player[]): void {
     this.players = players
@@ -32,10 +32,12 @@ export class TableComponent {
 
     this.rounds = this.tableService.groupRounds(ungroupedRounds)
 
-    // console.log(ungroupedRounds)
-    // console.log(this.matches)
-    // console.log(this.stats)
-    // console.log(this.rounds)
+    console.log(ungroupedRounds)
+    console.log(this.matches)
+    console.log(this.stats)
+    console.log(this.rounds)
+
+    this.cdr.detectChanges()
   }
 
   print(): void {

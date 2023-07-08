@@ -10,7 +10,7 @@ function createPlayers(...players: string[]): Player[] {
 
 function calculate(players: Player[], playersPerTeam = 2) {
   const totalPlayers = players.length
-  const matchesPerRound = totalPlayers / (playersPerTeam * 2)
+  const matchesPerRound = Math.round(totalPlayers / (playersPerTeam * 2))
   const matchesPerPlayer = totalPlayers - 1
   const totalRounds = matchesPerPlayer
   const totalMatches = matchesPerRound * (totalPlayers - 1)
@@ -131,6 +131,8 @@ function createRounds(
 
   for (let round = 1; round <= totalRounds; round++) {
     while (playersNotPlayOnRound.length > 0) {
+console.log('createRounds');
+
       const player =
         playersNotPlayOnRound[
           Math.round(Math.random() * (playersNotPlayOnRound.length - 1))
@@ -192,8 +194,8 @@ const players = createPlayers(
   'Pedro',
   'João',
   'Lucas',
-  'Matheus',
-  'Marcos',
+  // 'Matheus',
+  // 'Marcos',
 )
 
 const matches = createMatches(players)
