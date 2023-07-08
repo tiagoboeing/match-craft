@@ -2,7 +2,7 @@ name: Deploy to Pages
 
 on:
   push:
-    branches: ["master"]
+    branches: ['master']
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
 
 jobs:
@@ -24,21 +24,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
-        
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.7.0
 
       - name: Install dependencies
         shell: bash
         run: npm install
-        
+
       - name: Build
         shell: bash
-        run: npm build --production
-        
+        run: npm run build --production
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
