@@ -24,15 +24,14 @@ export class TableComponent {
     this.matches = this.tableService.createMatches(players)
     this.stats = this.tableService.calculate(players)
 
-    const ungroupedRounds = this.tableService.createRounds(
+    this.rounds = this.tableService.createRounds(
       this.matches,
-      players,
+      this.players,
       this.stats.totalRounds,
     )
 
-    this.rounds = this.tableService.groupRounds(ungroupedRounds)
+    this.rounds = this.tableService.groupRounds(this.rounds)
 
-    console.log(ungroupedRounds)
     console.log(this.matches)
     console.log(this.stats)
     console.log(this.rounds)

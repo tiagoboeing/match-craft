@@ -26,8 +26,8 @@ export class TableService {
     const matches: Match[] = []
     const usedTeams: Set<string> = new Set()
 
-    if (players.length % 2 !== 0) {
-      throw new Error('The number of participants must be even')
+    if (players.length % 4 !== 0) {
+      throw new Error('The number of participants must be even and divisible by 4')
     } else if (players.length < 2) {
       throw new Error('The number of participants must be greater than 1')
     }
@@ -112,9 +112,9 @@ export class TableService {
   }
 
   createRounds(matches: Match[], players: Player[], totalRounds: number) {
-    const clonedMatches = structuredClone(matches)
     let playersNotPlayOnRound = structuredClone(players)
     let roundMatches: Round[] = []
+    const clonedMatches = structuredClone(matches)
 
     for (let round = 1; round <= totalRounds; round++) {
       while (playersNotPlayOnRound.length > 0) {
@@ -130,6 +130,7 @@ export class TableService {
             team2.some((p) => p.id === player.id),
         )
 
+        // find a match with all players availables
         const matchWithPlayersAvailables = playerMatches.find((match) => {
           const { team1, team2 } = match
 
@@ -143,6 +144,8 @@ export class TableService {
 
           return allTeam1PlayersAreAvailable && allTeam2PlayersAreAvailable
         })
+
+        console.log(matchWithPlayersAvailables);
 
         if (!playerMatches || !matchWithPlayersAvailables) {
           continue
@@ -159,10 +162,14 @@ export class TableService {
             player.id !== team2[1].id,
         )
 
+        // add match to round
         roundMatches.push({
           round,
           matches: [matchWithPlayersAvailables],
         })
+
+        // mark match as played removing from list
+        clonedMatches.splice(clonedMatches.indexOf(matchWithPlayersAvailables), 1)
       }
 
       playersNotPlayOnRound = structuredClone(players)
