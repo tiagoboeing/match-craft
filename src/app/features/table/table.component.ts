@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { Player } from '../player/models/player.model'
 import { Match, Round } from './models/table.model'
 import { TableService } from './services/table.service'
@@ -7,9 +7,9 @@ import { TableService } from './services/table.service'
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent {
-  @Input()
   players: Player[] = []
 
   matches: Match[] = []
@@ -19,19 +19,23 @@ export class TableComponent {
   constructor(private tableService: TableService) {}
 
   public create(players: Player[]): void {
-    this.matches = this.tableService.createMatches(players)
+    this.players = players
 
+    this.matches = this.tableService.createMatches(players)
     this.stats = this.tableService.calculate(players)
 
-    this.rounds = this.tableService.createRounds(
+    const ungroupedRounds = this.tableService.createRounds(
       this.matches,
       players,
       this.stats.totalRounds,
     )
 
-    console.log(this.matches)
-    console.log(this.stats)
-    console.log(this.rounds)
+    this.rounds = this.tableService.groupRounds(ungroupedRounds)
+
+    // console.log(ungroupedRounds)
+    // console.log(this.matches)
+    // console.log(this.stats)
+    // console.log(this.rounds)
   }
 
   print(): void {

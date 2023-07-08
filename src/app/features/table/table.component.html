@@ -123,7 +123,7 @@
             scope="col"
             class="px-6 py-3 text-center text-sm font-medium text-slate-900 w-0"
           >
-            x
+            &nbsp;
           </th>
 
           <th class="px-6 py-3 text-left text-sm font-medium text-slate-900">
@@ -133,33 +133,62 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let match of matches" class="odd:bg-white even:bg-slate-50">
-          <td
-            class="px-6 py-4 w-min whitespace-nowrap text-sm font-medium text-slate-900 text-right"
-          >
-            <span *ngFor="let team of match.team1; let last = last">
-              <span class="font-bold text-base">{{ team.name }}</span>
-              <span class="text-slate-500">&nbsp;({{ team.id }})</span>
-              <span *ngIf="!last"> / </span>
-            </span>
-          </td>
+        <ng-container *ngFor="let round of rounds">
+          <tr>
+            <td
+              colspan="3"
+              class="text-center font-bold bg-slate-300 py-2 print:border-t"
+            >
+              Round {{ round.round }}
+            </td>
+          </tr>
 
-          <td
-            class="px-6 py-4 w-min whitespace-nowrap text-sm text-center font-medium text-slate-900"
+          <tr
+            *ngFor="let match of round.matches"
+            class="odd:bg-white even:bg-slate-50"
           >
-            x
-          </td>
+            <td
+              class="px-6 py-4 w-min whitespace-nowrap text-sm font-medium text-slate-900 text-right"
+            >
+              <span *ngFor="let team of match.team1; let last = last">
+                <span class="font-bold text-base">{{ team.name }}</span>
+                <span class="text-slate-500">&nbsp;({{ team.id }})</span>
+                <span *ngIf="!last"> / </span>
+              </span>
+            </td>
 
-          <td
-            class="px-6 py-4 w-min whitespace-nowrap text-sm font-medium text-slate-900"
-          >
-            <span *ngFor="let team of match.team2; let last = last">
-              <span class="font-bold text-base">{{ team.name }}</span>
-              <span class="text-slate-500">&nbsp;({{ team.id }})</span>
-              <span *ngIf="!last"> / </span>
-            </span>
-          </td>
-        </tr>
+            <td
+              class="px-6 py-4 w-min whitespace-nowrap text-sm text-center font-medium text-slate-900"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+                width="24"
+                height="24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </td>
+
+            <td
+              class="px-6 py-4 w-min whitespace-nowrap text-sm font-medium text-slate-900"
+            >
+              <span *ngFor="let team of match.team2; let last = last">
+                <span class="font-bold text-base">{{ team.name }}</span>
+                <span class="text-slate-500">&nbsp;({{ team.id }})</span>
+                <span *ngIf="!last"> / </span>
+              </span>
+            </td>
+          </tr>
+        </ng-container>
       </tbody>
     </table>
 

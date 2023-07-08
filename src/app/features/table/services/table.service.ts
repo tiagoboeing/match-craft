@@ -105,13 +105,14 @@ export class TableService {
 
     function getTeamKey(team: Player[]): string {
       const [player1, player2] = team
-      return [player1.name, player2.name].sort().join('-')
+      return [player1.id, player2.id].sort().join('-')
     }
 
     return matches
   }
 
   createRounds(matches: Match[], players: Player[], totalRounds: number) {
+    const clonedMatches = structuredClone(matches)
     let playersNotPlayOnRound = structuredClone(players)
     let roundMatches: Round[] = []
 
@@ -123,7 +124,7 @@ export class TableService {
           ]
 
         // find a team with the sorted player
-        const playerMatches = matches.filter(
+        const playerMatches = clonedMatches.filter(
           ({ team1, team2 }) =>
             team1.some((p) => p.id === player.id) ||
             team2.some((p) => p.id === player.id),
@@ -168,5 +169,24 @@ export class TableService {
     }
 
     return roundMatches
+  }
+
+  groupRounds(rounds: Round[]) {
+    return rounds.reduce((acc: Round[], round) => {
+      const { round: roundNumber, matches } = round
+
+      const roundExists = acc?.find((r) => r.round === roundNumber)
+
+      if (!roundExists) {
+        acc.push({
+          round: roundNumber,
+          matches,
+        })
+      } else {
+        roundExists?.matches.push(...matches)
+      }
+
+      return acc
+    }, [] as Round[])
   }
 }
