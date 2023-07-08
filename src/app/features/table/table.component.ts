@@ -29,7 +29,7 @@ export class TableComponent {
       this.stats.totalRounds,
     )
 
-    console.log(this.matches);
+    console.log(this.matches)
     console.log(this.stats)
     console.log(this.rounds)
   }
@@ -39,28 +39,28 @@ export class TableComponent {
   }
 
   exportPDF(): void {
-    // const matches = document.getElementById('matches')
+    const matches = document.getElementById('matches')
 
-    // html2pdf()
-    //   .from(matches)
-    //   .set({
-    //     margin: 10,
-    //     image: { type: 'png', quality: 1.0 },
-    //     jsPDF: {
-    //       orientation: 'portrait',
-    //       compress: true,
-    //       pagesplit: true,
-    //     },
-    //     html2canvas: {
-    //       scale: 2,
-    //       scrollY: 0,
-    //       letterRendering: true,
-    //       ignoreElements: (element: any) =>
-    //         element.id === 'print' || element.id === 'export-pdf',
-    //     },
-    //   })
-    //   .toPdf()
-    //   .save()
+    html2pdf()
+      .from(matches)
+      .set({
+        margin: 10,
+        image: { type: 'png', quality: 1.0 },
+        jsPDF: {
+          orientation: 'portrait',
+          compress: true,
+          pagesplit: true,
+        },
+        html2canvas: {
+          scale: 2,
+          scrollY: 0,
+          letterRendering: true,
+          ignoreElements: (element: any) =>
+            element.id === 'print' || element.id === 'export-pdf',
+        },
+      })
+      .toPdf()
+      .save()
   }
 
   get websiteUrl(): string {
