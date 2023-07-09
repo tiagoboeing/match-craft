@@ -127,12 +127,11 @@ function createRounds(
   totalRounds: number,
 ) {
   let playersNotPlayOnRound = structuredClone(players)
+  const clonedMatches = structuredClone(matches)
   let roundMatches: Round[] = []
 
   for (let round = 1; round <= totalRounds; round++) {
     while (playersNotPlayOnRound.length > 0) {
-console.log('createRounds');
-
       const player =
         playersNotPlayOnRound[
           Math.round(Math.random() * (playersNotPlayOnRound.length - 1))
@@ -178,6 +177,9 @@ console.log('createRounds');
         round,
         matches: [matchWithPlayersAvailables],
       })
+
+      // mark match as played removing from list
+      clonedMatches.splice(clonedMatches.indexOf(matchWithPlayersAvailables), 1)
     }
 
     playersNotPlayOnRound = structuredClone(players)

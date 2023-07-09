@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
 import { TableModule } from '../table/table.module'
 import { PlayerComponent } from './player.component'
+import { TranslateModule } from '@ngx-translate/core'
 
 const routes: Routes = [
   {
@@ -17,8 +18,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    TableModule,
     RouterModule.forChild(routes),
+    TableModule,
+    TranslateModule.forChild(),
   ],
   exports: [PlayerComponent],
   providers: [],

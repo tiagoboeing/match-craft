@@ -1,0 +1,58 @@
+{
+  "header": {
+    "productName": "Championship table"
+  },
+  "limitations": {
+    "title": "Limitations",
+    "list-1": "The <span class='font-bold'>teams are doubles</span> (singles not supported yet)",
+    "list-2": "The number of players <span class='font-bold'>must be even</span> and needs to be incremented by 4 (because if you add odd numbers or not multiples of 4, some players will need to wait until a match ends at the round).",
+    "list-3": "The process will be sent always to your devide, this can freeze the page."
+  },
+  "buttons": {
+    "print": "Print"
+  },
+  "player": {
+    "create-player": "Create player",
+    "inputs": {
+      "player-name": {
+        "label": "Player name",
+        "placeholder": "Fill with the name of the player..."
+      }
+    },
+    "buttons": {
+      "add": "Add",
+      "player": "player",
+      "remove": "Remove",
+      "generate-matches": "Generate matches"
+    },
+    "list": {
+      "id": "ID",
+      "name": "Name",
+      "players-created": "players created",
+      "empty": "Please, create you first player to display here!"
+    }
+  },
+  "table": {
+    "results": "Results",
+    "total-players": "You have a total of <span class=\"font-bold\">{{ totalPlayers }} players</span>",
+    "will-play": "Each player will play",
+    "match": "match",
+    "matches": "matches",
+    "in": "in",
+    "round": "round",
+    "rounds": "rounds",
+    "each-round": "Each round will have",
+    "have": "have",
+    "total-matches": "The total of matches is {{ totalMatches }}",
+    "section-matches": {
+      "title": "Matches",
+      "team-1": "Team 1",
+      "team-2": "Team 2",
+      "round": "Round"
+    },
+    "created-using": "Table created using"
+  },
+  "footer": {
+    "developed-by": "Developed by"
+  }
+}

@@ -1,17 +1,19 @@
 <h1 class="text-2xl font-bold border-b pb-2 mb-5 print:hidden">
-  Create player
+  {{ 'player.create-player' | translate }}
 </h1>
 
 <form [formGroup]="form" class="print:hidden">
   <div class="flex flex-row gap-3 flex-grow w-full items-end">
     <div class="grow">
-      <label for="name" class="text-sm text-gray-500">Player name</label>
+      <label for="name" class="text-sm text-gray-500">
+        {{ 'player.inputs.player-name.label' | translate }}
+      </label>
       <input
         #name
         type="text"
         id="name"
         formControlName="name"
-        placeholder="Fill with the name of the player..."
+        [placeholder]="'player.inputs.player-name.placeholder' | translate"
         class="mt-1 block w-full transition rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
       />
     </div>
@@ -22,7 +24,10 @@
       [disabled]="form.invalid"
       class="h-min bg-transparent transition disabled:text-slate-500 disabled:ring-0 disabled:cursor-not-allowed disabled:border-slate-500 disabled:hover:bg-transparent active:ring hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
     >
-      Add <span class="hidden sm:inline-flex">player</span>
+      {{ 'player.buttons.add' | translate }}
+      <span class="hidden sm:inline-flex">
+        {{ 'player.buttons.player' | translate }}
+      </span>
     </button>
   </div>
 </form>
@@ -36,13 +41,14 @@
             scope="col"
             class="px-6 py-3 text-left text-sm font-medium text-slate-900 w-0"
           >
-            ID
+            {{ 'player.list.id' | translate }}
           </th>
+
           <th
             scope="col"
             class="px-6 py-3 text-left text-sm font-medium text-slate-900"
           >
-            Name
+            {{ 'player.list.name' | translate }}
           </th>
 
           <th
@@ -89,7 +95,7 @@
                   />
                 </svg>
 
-                Remove
+                {{ 'player.buttons.remove' | translate }}
               </button>
             </td>
           </ng-container>
@@ -100,7 +106,7 @@
             class="px-6 py-4 w-min whitespace-nowrap text-sm font-medium text-slate-900 text-center"
             colspan="3"
           >
-            {{ players.length }} players created
+            {{ players.length }} {{ 'player.list.players-created' | translate }}
           </td>
         </tr>
       </tbody>
@@ -127,7 +133,7 @@
         />
       </svg>
 
-      Please, create you first player to display here!
+      {{ 'player.list.empty' | translate }}
     </div>
   </ng-template>
 </div>
@@ -139,7 +145,7 @@
     [disabled]="players.length < 4 || players.length % 4 !== 0"
     class="w-full h-min print:hidden bg-blue-500 text-white transition disabled:text-slate-500 disabled:ring-0 disabled:cursor-not-allowed disabled:bg-transparent disabled:border-slate-500 disabled:hover:bg-transparent active:ring hover:bg-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
   >
-    Generate matches
+    {{ 'player.buttons.generate-matches' | translate }}
   </button>
 
   <ng-container class="print:block">

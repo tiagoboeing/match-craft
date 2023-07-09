@@ -1,9 +1,23 @@
 <header class="bg-white p-4 shadow print:shadow-none">
   <div class="container mx-auto">
     <div class="flex flex-row content-between w-full items-center">
-      <h1 class="text-lg text-gray-500 font-bold grow">Championship table</h1>
+      <h1 class="text-lg text-gray-500 font-bold grow">
+        {{ 'header.productName' | translate }}
+      </h1>
 
-      <div class="print:hidden">
+      <div class="print:hidden flex items-center gap-5">
+        <div id="flags" class="flex gap-2">
+          <span
+            class="fi fi-br cursor-pointer hover:opacity-70"
+            (click)="changeLanguage('pt-BR')"
+          ></span>
+
+          <span
+            class="fi fi-us cursor-pointer hover:opacity-70"
+            (click)="changeLanguage('en-US')"
+          ></span>
+        </div>
+
         <a
           class="github-button"
           href="https://github.com/tiagoboeing/championship-table"
@@ -19,7 +33,7 @@
 </header>
 
 <div
-  class="container mt-6 print:hidden text-slate-700 bg-white rounded-xl shadow-lg ring-1 ring-slate-900/5 p-4 pl-8 dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:text-slate-400"
+  class="container mt-6 print:hidden text-slate-700 bg-white rounded-md shadow-lg ring-1 ring-slate-900/5 p-4 pl-8 dark:bg-slate-800 dark:ring-0 dark:highlight-white/5 dark:text-slate-400"
 >
   <p class="flex gap-2 font-bold underline underline-offset-4 mb-2">
     <svg
@@ -37,17 +51,13 @@
       />
     </svg>
 
-    Limitations:
+    {{ 'limitations.title' | translate }}
   </p>
 
   <ul class="list-disc list-inside pl-2">
-    <li>
-      The <span class="font-bold">teams are doubles</span> (singles not supported yet)
-    </li>
-    <li>The number of players <span class="font-bold">must be even</span> and needs to be incremented by 4 (because if you add odd numbers or not multiples of 4, some players will need to wait until a match ends at the round).</li>
-    <li>
-      The process will be sent always to your devide, this can freeze the page.
-    </li>
+    <li [innerHTML]="'limitations.list-1' | translate"></li>
+    <li [innerHTML]="'limitations.list-2' | translate"></li>
+    <li [innerHTML]="'limitations.list-3' | translate"></li>
   </ul>
 </div>
 
@@ -60,7 +70,7 @@
 <footer class="bg-white shadow dark:bg-gray-900 my-4 mb-auto print:hidden">
   <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
     <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-      Developed by
+      {{ 'footer.developed-by' | translate }}
       <a
         href="https://github.com/tiagoboeing"
         target="_blank"

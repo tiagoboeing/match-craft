@@ -1,0 +1,58 @@
+{
+  "header": {
+    "productName": "Tabela de campeonato"
+  },
+  "limitations": {
+    "title": "Limitações",
+    "list-1": "Os <span class='font-bold'>times são duplas</span> (individual ainda não suportado)",
+    "list-2": "O número de jogadores <span class='font-bold'>deve ser par</span> e incrementado de 4 em 4 (porque ao adicionar um número ímpar ou não múltiplo de 4, alguns jogadores precisarão esperar durante a rodada até que a partida acabe).",
+    "list-3": "O processamento será sempre no dispositivo, ao adicionar muitos jogadores (valor muito alto), isto poderá causar congelamento da tela."
+  },
+  "buttons": {
+    "print": "Imprimir"
+  },
+  "player": {
+    "create-player": "Criar jogador",
+    "inputs": {
+      "player-name": {
+        "label": "Nome do jogador",
+        "placeholder": "Preencha com o nome do jogador..."
+      }
+    },
+    "buttons": {
+      "add": "Adicionar",
+      "player": "jogador",
+      "remove": "Remover",
+      "generate-matches": "Gerar partidas"
+    },
+    "list": {
+      "id": "ID",
+      "name": "Nome",
+      "players-created": "jogadores criados",
+      "empty": "Por favor, crie um jogador para exibir aqui!"
+    }
+  },
+  "table": {
+    "results": "Resultados",
+    "total-players": "Você tem um total de <span class=\"font-bold\">{{ totalPlayers }} jogadores</span>",
+    "will-play": "Cada jogador irá jogar",
+    "match": "partida",
+    "matches": "partidas",
+    "in": "em",
+    "round": "rodada",
+    "rounds": "rodadas",
+    "each-round": "Cada rodada",
+    "have": "terá",
+    "total-matches": "O total de partidas é {{ totalMatches }}",
+    "section-matches": {
+      "title": "Partidas",
+      "team-1": "Time 1",
+      "team-2": "Time 2",
+      "round": "Rodada"
+    },
+    "created-using": "Tabela criada utilizando"
+  },
+  "footer": {
+    "developed-by": "Desenvolvido por"
+  }
+}

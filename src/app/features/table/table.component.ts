@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+} from '@angular/core'
 import { Player } from '../player/models/player.model'
 import { Match, Round } from './models/table.model'
 import { TableService } from './services/table.service'
@@ -16,7 +21,10 @@ export class TableComponent {
   rounds: Round[] = []
   stats!: ReturnType<typeof this.tableService.calculate>
 
-  constructor(private tableService: TableService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private tableService: TableService,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   public create(players: Player[]): void {
     this.players = players

@@ -27,7 +27,9 @@ export class TableService {
     const usedTeams: Set<string> = new Set()
 
     if (players.length % 4 !== 0) {
-      throw new Error('The number of participants must be even and divisible by 4')
+      throw new Error(
+        'The number of participants must be even and divisible by 4',
+      )
     } else if (players.length < 2) {
       throw new Error('The number of participants must be greater than 1')
     }
@@ -167,7 +169,10 @@ export class TableService {
         })
 
         // mark match as played removing from list
-        clonedMatches.splice(clonedMatches.indexOf(matchWithPlayersAvailables), 1)
+        clonedMatches.splice(
+          clonedMatches.indexOf(matchWithPlayersAvailables),
+          1,
+        )
       }
 
       playersNotPlayOnRound = structuredClone(players)

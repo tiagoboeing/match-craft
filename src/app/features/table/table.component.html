@@ -19,37 +19,57 @@
         />
       </svg>
 
-      Results
+      {{ 'table.results' | translate }}
     </p>
 
     <ul class="list-disc list-inside pl-2">
-      <p class="mb-3">
-        You have a total of
-        <span class="font-bold">{{ stats.totalPlayers }} players</span>
-      </p>
+      <p
+        class="mb-3"
+        [innerHTML]="
+          'table.total-players'
+            | translate: { totalPlayers: stats.totalPlayers }
+        "
+      ></p>
 
       <li>
-        Each player will play
-        <span class="font-bold"
-          >{{ stats.matchesPerPlayer }}
-          {{ stats.matchesPerPlayer > 1 ? 'matches' : 'match' }}</span
+        {{ 'table.will-play' | translate }}
+        <span class="font-bold">
+          {{ stats.matchesPerPlayer }}
+          {{
+            stats.matchesPerPlayer > 1
+              ? ('table.matches' | translate)
+              : ('match' | translate)
+          }}</span
         >
-        in
+        {{ 'table.in' | translate }}
         <span class="font-bold"
           >{{ stats.totalRounds }}
-          {{ stats.totalRounds > 1 ? 'rounds' : 'round' }}</span
+          {{
+            stats.totalRounds > 1
+              ? ('table.rounds' | translate)
+              : ('table.round' | translate)
+          }}</span
         >
       </li>
 
       <li>
-        Each round will
+        {{ 'table.each-round' | translate }}
         <span class="font-bold"
-          >have {{ stats.matchesPerRound }}
-          {{ stats.matchesPerRound > 1 ? 'matches' : 'match' }}</span
+          >{{ 'table.have' | translate }} {{ stats.matchesPerRound }}
+          {{
+            stats.matchesPerRound > 1
+              ? ('table.matches' | translate)
+              : ('table.match' | translate)
+          }}</span
         >
       </li>
 
-      <li>The total of matches is {{ stats.totalMatches }}</li>
+      <li>
+        {{
+          'table.total-matches'
+            | translate: { totalMatches: stats.totalMatches }
+        }}
+      </li>
     </ul>
   </div>
 
@@ -57,7 +77,9 @@
     <div
       class="flex w-full items-center content-between border-b border-spacing-3 mb-5"
     >
-      <h1 class="text-2xl font-bold grow">Matches</h1>
+      <h1 class="text-2xl font-bold grow">
+        {{ 'table.section-matches.title' | translate }}
+      </h1>
 
       <div class="flex gap-2">
         <button
@@ -105,7 +127,7 @@
             />
           </svg>
 
-          Print
+          {{ 'buttons.print' | translate }}
         </button>
       </div>
     </div>
@@ -117,7 +139,7 @@
             scope="col"
             class="px-6 py-3 text-sm font-medium text-slate-900 text-right"
           >
-            Team 1
+            {{ 'table.section-matches.team-1' | translate }}
           </th>
           <th
             scope="col"
@@ -127,7 +149,7 @@
           </th>
 
           <th class="px-6 py-3 text-left text-sm font-medium text-slate-900">
-            Team 2
+            {{ 'table.section-matches.team-2' | translate }}
           </th>
         </tr>
       </thead>
@@ -139,7 +161,7 @@
               colspan="3"
               class="text-center font-bold bg-slate-300 py-2 print:border-t"
             >
-              Round {{ round.round }}
+              {{ 'table.section-matches.round' | translate }} {{ round.round }}
             </td>
           </tr>
 
@@ -196,7 +218,7 @@
       id="credits"
       class="hidden print:block text-center mt-5 border-t-2 pt-3"
     >
-      Table created using {{ websiteUrl }}
+      {{ 'table.created-using' | translate }} {{ websiteUrl }}
     </div>
   </div>
 </ng-container>
