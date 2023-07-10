@@ -26,6 +26,7 @@
       "generate-matches": "Generate matches"
     },
     "list": {
+      "title": "Players",
       "id": "ID",
       "name": "Name",
       "players-created": "players created",

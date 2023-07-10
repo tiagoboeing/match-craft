@@ -26,6 +26,7 @@
       "generate-matches": "Gerar partidas"
     },
     "list": {
+      "title": "Jogadores",
       "id": "ID",
       "name": "Nome",
       "players-created": "jogadores criados",

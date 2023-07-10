@@ -34,47 +34,53 @@
 
 <div id="players-list print:hidden" class="mt-8">
   <ng-container *ngIf="players?.length; else empty">
+    <div class="px-5 py-4 mb-4 border-b border-gray-100 flex content-between">
+      <h2 class="font-semibold text-gray-800 grow">
+        {{ 'player.list.title' | translate }}
+      </h2>
+
+      <div>
+        {{ players.length }} {{ 'player.list.players-created' | translate }}
+      </div>
+    </div>
+
     <table class="min-w-full print:hidden">
-      <thead class="bg-slate-100 border-b border-slate-200">
-        <tr>
+      <thead>
+        <tr class="my-2 uppercase text-sm text-slate-500">
           <th
             scope="col"
-            class="px-6 py-3 text-left text-sm font-medium text-slate-900 w-0"
+            class="px-6 py-2 text-left font-medium w-0 bg-slate-100 rounded-l"
           >
             {{ 'player.list.id' | translate }}
           </th>
 
-          <th
-            scope="col"
-            class="px-6 py-3 text-left text-sm font-medium text-slate-900"
-          >
+          <th scope="col" class="px-6 py-2 text-left font-medium bg-slate-100">
             {{ 'player.list.name' | translate }}
           </th>
 
           <th
             scope="col"
-            class="px-6 py-3 text-left text-sm font-medium text-slate-900 w-0"
+            class="px-6 py-2 text-left font-medium w-0 bg-slate-100 rounded-r"
           ></th>
         </tr>
       </thead>
 
       <tbody>
-        <tr
-          *ngFor="let player of players"
-          class="odd:bg-white even:bg-slate-50"
-        >
+        <tr *ngFor="let player of players" class="border-b">
           <ng-container *ngIf="players.length; else empty">
             <td
-              class="px-6 py-4 w-min whitespace-nowrap text-sm font-medium text-slate-900"
+              class="px-6 py-3 w-min whitespace-nowrap text-sm font-medium text-slate-600"
             >
               {{ player.id }}
             </td>
 
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+            <td
+              class="px-6 py-3 whitespace-nowrap text-sm text-slate-900 font-medium"
+            >
               {{ player.name }}
             </td>
 
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+            <td class="px-6 py-3 whitespace-nowrap text-sm text-slate-600">
               <button
                 type="button"
                 (click)="remove(player.id)"
@@ -99,15 +105,6 @@
               </button>
             </td>
           </ng-container>
-        </tr>
-
-        <tr>
-          <td
-            class="px-6 py-4 w-min whitespace-nowrap text-sm font-medium text-slate-900 text-center"
-            colspan="3"
-          >
-            {{ players.length }} {{ 'player.list.players-created' | translate }}
-          </td>
         </tr>
       </tbody>
     </table>
