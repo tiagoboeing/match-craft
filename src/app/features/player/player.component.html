@@ -66,7 +66,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let player of players" class="border-b">
+        <tr *ngFor="let player of players" class="border-b last:border-0">
           <ng-container *ngIf="players.length; else empty">
             <td
               class="px-6 py-3 w-min whitespace-nowrap text-sm font-medium text-slate-600"
