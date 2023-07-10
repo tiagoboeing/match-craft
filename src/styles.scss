@@ -3,7 +3,7 @@
 @tailwind utilities;
 @tailwind variants;
 
-@import "/node_modules/flag-icons/css/flag-icons.min.css";
+@import '/node_modules/flag-icons/css/flag-icons.min.css';
 
 body {
   @apply bg-slate-100;
@@ -11,4 +11,100 @@ body {
 
 .container {
   @apply mx-auto max-w-5xl;
+}
+
+@keyframes ldio-xpy8x2qrsbl-1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes ldio-xpy8x2qrsbl-2 {
+  0% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(225deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+.ldio-xpy8x2qrsbl > div:nth-child(2) {
+  transform: translate(-15px, 0);
+}
+.ldio-xpy8x2qrsbl > div:nth-child(2) div {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 120px;
+  height: 60px;
+  border-radius: 120px 120px 0 0;
+  background: #eab145;
+  animation: ldio-xpy8x2qrsbl-1 1s linear infinite;
+  transform-origin: 60px 60px;
+}
+.ldio-xpy8x2qrsbl > div:nth-child(2) div:nth-child(2) {
+  animation: ldio-xpy8x2qrsbl-2 1s linear infinite;
+}
+.ldio-xpy8x2qrsbl > div:nth-child(2) div:nth-child(3) {
+  transform: rotate(-90deg);
+  animation: none;
+}
+@keyframes ldio-xpy8x2qrsbl-3 {
+  0% {
+    transform: translate(190px, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(70px, 0);
+    opacity: 1;
+  }
+}
+.ldio-xpy8x2qrsbl > div:nth-child(1) {
+  display: block;
+}
+.ldio-xpy8x2qrsbl > div:nth-child(1) div {
+  position: absolute;
+  top: 92px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fad96d;
+  animation: ldio-xpy8x2qrsbl-3 1s linear infinite;
+}
+.ldio-xpy8x2qrsbl > div:nth-child(1) div:nth-child(1) {
+  animation-delay: -0.67s;
+}
+.ldio-xpy8x2qrsbl > div:nth-child(1) div:nth-child(2) {
+  animation-delay: -0.33s;
+}
+.ldio-xpy8x2qrsbl > div:nth-child(1) div:nth-child(3) {
+  animation-delay: 0s;
+}
+.loadingio-spinner-bean-eater-pkjy8bdk25 {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+}
+.ldio-xpy8x2qrsbl {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-xpy8x2qrsbl div {
+  box-sizing: content-box;
 }

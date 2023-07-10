@@ -9,6 +9,10 @@
     "test": "ng test"
   },
   "private": true,
+  "author": {
+    "name": "Tiago Boeing",
+    "email": "contato@tiagoboeing.com"
+  },
   "dependencies": {
     "@angular/animations": "^16.1.0",
     "@angular/common": "^16.1.0",
