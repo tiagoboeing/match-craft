@@ -23,7 +23,8 @@
       "add": "Add",
       "player": "player",
       "remove": "Remove",
-      "generate-matches": "Generate matches"
+      "generate-matches": "Generate matches",
+      "add-more-players": "Add more {{number}} to release the button"
     },
     "list": {
       "title": "Players",

@@ -1,8 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { PlayerService } from './services/player.service'
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms'
 import { Player } from './models/player.model'
 import { Subject, takeUntil } from 'rxjs'
+import { TranslateService } from '@ngx-translate/core'
 
 @Component({
   selector: 'app-player',
@@ -18,6 +27,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
   constructor(
     private playerService: PlayerService,
     private formBuilder: FormBuilder,
+    private translate: TranslateService,
   ) {
     this.form = this.formBuilder.group<{ name: FormControl<string> }>({
       name: this.formBuilder.control('', {
@@ -51,5 +61,21 @@ export class PlayerComponent implements OnInit, OnDestroy {
 
   remove(id: number): void {
     this.playerService.remove(id)
+  }
+
+  get addMoreText(): string | void {
+    if (this.playersLengthIsRight) return
+
+    const quantity = this.players.length
+    const nextMultiple = Math.floor(quantity / 4) * 4 + 4
+    const playersRemainingToRelease = nextMultiple - quantity
+
+    return this.translate.instant('player.buttons.add-more-players', {
+      number: playersRemainingToRelease,
+    })
+  }
+
+  get playersLengthIsRight(): boolean {
+    return this.players.length % 4 === 0
   }
 }
