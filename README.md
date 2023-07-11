@@ -1,27 +1,20 @@
-# ChampionshipTable
+# Championship Table
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+Motivated by Beach Tennis games. This project is a web application that generates a table with all combinations of matches with doubles as teams.
 
-## Development server
+![](docs/imgs/app.gif)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Languages
 
-## Code scaffolding
+Available in English and Portuguese.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How to use
 
-## Build
+- Add the players incremeting by 4. Click on the button "Add player" to include.
+- Click on the button "Generate matches" to generate the table.
+- Scroll the page and see the table with all combinations of matches.
+- You can print or save the page as PDF, **but print is more recommended**. As an alternative you can use the native browser PDF, just click on print > save as PDF.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## License
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
