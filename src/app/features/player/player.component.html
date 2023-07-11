@@ -32,9 +32,11 @@
   </div>
 </form>
 
-<div id="players-list print:hidden" class="mt-8">
+<div id="players-list" class="mt-8 print:hidden">
   <ng-container *ngIf="players?.length; else empty">
-    <div class="px-5 py-4 mb-4 border-b border-gray-100 flex content-between">
+    <div
+      class="px-5 py-4 mb-4 border-b border-gray-100 flex content-between print:hidden"
+    >
       <h2 class="font-semibold text-gray-800 grow">
         {{ 'player.list.title' | translate }}
       </h2>
@@ -44,70 +46,75 @@
       </div>
     </div>
 
-    <table class="min-w-full print:hidden">
-      <thead>
-        <tr class="my-2 uppercase text-sm text-slate-500">
-          <th
-            scope="col"
-            class="px-6 py-2 text-left font-medium w-0 bg-slate-100 rounded-l"
-          >
-            {{ 'player.list.id' | translate }}
-          </th>
-
-          <th scope="col" class="px-6 py-2 text-left font-medium bg-slate-100">
-            {{ 'player.list.name' | translate }}
-          </th>
-
-          <th
-            scope="col"
-            class="px-6 py-2 text-left font-medium w-0 bg-slate-100 rounded-r"
-          ></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr *ngFor="let player of players" class="border-b last:border-0">
-          <ng-container *ngIf="players.length; else empty">
-            <td
-              class="px-6 py-3 w-min whitespace-nowrap text-sm font-medium text-slate-600"
+    <div class="overflow-auto">
+      <table class="min-w-full print:hidden">
+        <thead>
+          <tr class="my-2 uppercase text-sm text-slate-500">
+            <th
+              scope="col"
+              class="px-6 py-2 text-left font-medium w-0 bg-slate-100 rounded-l"
             >
-              {{ player.id }}
-            </td>
+              {{ 'player.list.id' | translate }}
+            </th>
 
-            <td
-              class="px-6 py-3 whitespace-nowrap text-sm text-slate-900 font-medium"
+            <th
+              scope="col"
+              class="px-6 py-2 text-left font-medium bg-slate-100"
             >
-              {{ player.name }}
-            </td>
+              {{ 'player.list.name' | translate }}
+            </th>
 
-            <td class="px-6 py-3 whitespace-nowrap text-sm text-slate-600">
-              <button
-                type="button"
-                (click)="remove(player.id)"
-                class="flex flex-row items-center gap-2 h-min bg-transparent disabled:hover:bg-transparent transition active:ring hover:bg-red-500 text-red-500 font-semibold hover:text-white py-1 px-4 border border-red-500 hover:border-transparent rounded"
+            <th
+              scope="col"
+              class="px-6 py-2 text-left font-medium w-0 bg-slate-100 rounded-r"
+            ></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let player of players" class="border-b last:border-0">
+            <ng-container *ngIf="players.length; else empty">
+              <td
+                class="px-6 py-3 w-min whitespace-nowrap text-sm font-medium text-slate-600"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-4 h-4"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                  />
-                </svg>
+                {{ player.id }}
+              </td>
 
-                {{ 'player.buttons.remove' | translate }}
-              </button>
-            </td>
-          </ng-container>
-        </tr>
-      </tbody>
-    </table>
+              <td
+                class="px-6 py-3 whitespace-nowrap text-sm text-slate-900 font-medium"
+              >
+                {{ player.name }}
+              </td>
+
+              <td class="px-6 py-3 whitespace-nowrap text-sm text-slate-600">
+                <button
+                  type="button"
+                  (click)="remove(player.id)"
+                  class="flex flex-row items-center gap-2 h-min bg-transparent disabled:hover:bg-transparent transition active:ring hover:bg-red-500 text-red-500 font-semibold hover:text-white py-1 px-4 border border-red-500 hover:border-transparent rounded"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-4 h-4"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                    />
+                  </svg>
+
+                  {{ 'player.buttons.remove' | translate }}
+                </button>
+              </td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </ng-container>
 
   <ng-template #empty>
