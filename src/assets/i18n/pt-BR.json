@@ -1,6 +1,6 @@
 {
   "header": {
-    "productName": "Tabela de campeonato"
+    "productName": "MatchCraft"
   },
   "limitations": {
     "title": "Limitações",
@@ -51,7 +51,8 @@
       "team-2": "Time 2",
       "round": "Rodada"
     },
-    "created-using": "Tabela criada utilizando"
+    "created-using": "Tabela gerada utilizando MatchCraft.",
+    "create-your-own": "Crie a sua em"
   },
   "footer": {
     "developed-by": "Desenvolvido por"

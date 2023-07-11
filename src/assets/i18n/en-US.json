@@ -1,6 +1,6 @@
 {
   "header": {
-    "productName": "Championship table"
+    "productName": "MatchCraft"
   },
   "limitations": {
     "title": "Limitations",
@@ -51,7 +51,8 @@
       "team-2": "Team 2",
       "round": "Round"
     },
-    "created-using": "Table created using"
+    "created-using": "Table created using MatchCraft.",
+    "create-your-own": "Crate your own in"
   },
   "footer": {
     "developed-by": "Developed by"
