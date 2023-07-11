@@ -1,4 +1,4 @@
-# Championship Table
+# MatchCraft
 
 Motivated by Beach Tennis games. This project is a web application that generates a table with all combinations of matches with doubles as teams.
 
