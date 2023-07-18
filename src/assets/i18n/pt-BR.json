@@ -24,7 +24,8 @@
       "player": "jogador",
       "remove": "Remover",
       "generate-matches": "Gerar partidas",
-      "add-more-players": "Adicione mais {{number}} para liberar o botão"
+      "add-more-players": "Adicione mais {{number}} para liberar o botão",
+      "randomize": "Embaralhar lista"
     },
     "list": {
       "title": "Jogadores",
