@@ -24,7 +24,8 @@
       "player": "player",
       "remove": "Remove",
       "generate-matches": "Generate matches",
-      "add-more-players": "Add more {{number}} to release the button"
+      "add-more-players": "Add more {{number}} to release the button",
+      "randomize": "Shuffle list"
     },
     "list": {
       "title": "Players",
