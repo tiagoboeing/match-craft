@@ -144,11 +144,50 @@
 
 <div id="generate-matches" class="mt-6">
   <button
+    type="button"
+    class="w-full h-min print:hidden mb-5 bg-transparent text-orange-500 transition disabled:text-slate-500 disabled:ring-0 disabled:cursor-not-allowed disabled:bg-transparent disabled:border-slate-500 disabled:hover:bg-transparent active:ring hover:bg-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded flex flex-row items-center justify-center gap-2"
+    *ngIf="players.length >= 2"
+    (click)="randomizePlayers()"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-4 h-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3"
+      />
+    </svg>
+
+    Randomize players
+  </button>
+
+  <button
     type="submit"
     (click)="table.create(players)"
     [disabled]="players.length < 4 || !playersLengthIsRight"
-    class="w-full h-min print:hidden bg-blue-500 text-white transition disabled:text-slate-500 disabled:ring-0 disabled:cursor-not-allowed disabled:bg-transparent disabled:border-slate-500 disabled:hover:bg-transparent active:ring hover:bg-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+    class="w-full h-min print:hidden bg-blue-500 text-white transition disabled:text-slate-500 disabled:ring-0 disabled:cursor-not-allowed disabled:bg-transparent disabled:bg-slate-300 disabled:border-none active:ring hover:bg-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded flex flex-row items-center justify-center gap-2"
   >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+      />
+    </svg>
+
     {{ 'player.buttons.generate-matches' | translate }}
   </button>
 

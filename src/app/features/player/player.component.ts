@@ -1,17 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { PlayerService } from './services/player.service'
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms'
-import { Player } from './models/player.model'
-import { Subject, takeUntil } from 'rxjs'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { TranslateService } from '@ngx-translate/core'
+import { shuffle } from 'lodash'
+import { Subject, takeUntil } from 'rxjs'
+import { Player } from './models/player.model'
+import { PlayerService } from './services/player.service'
 
 @Component({
   selector: 'app-player',
@@ -63,8 +56,12 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.playerService.remove(id)
   }
 
+  randomizePlayers(): void {
+    this.players = shuffle(this.players)
+  }
+
   get addMoreText(): string | void {
-    if (this.playersLengthIsRight) return
+    if (this.playersLengthIsRight && this.players.length) return
 
     const quantity = this.players.length
     const nextMultiple = Math.floor(quantity / 4) * 4 + 4
